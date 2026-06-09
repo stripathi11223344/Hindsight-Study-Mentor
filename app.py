@@ -1,5 +1,6 @@
 from agent import ask_agent
 from memory import save_memory, create_bank
+from reflection import generate_reflection
 
 create_bank()
 
@@ -17,6 +18,12 @@ while True:
 
     print("\nAgent:", response)
 
-    save_memory(user_input)
+    reflection = generate_reflection(user_input)
+
+    if reflection != "NONE":
+        save_memory(reflection)
+        print("\n[Memory Saved]")
+
+    
 
     print()
