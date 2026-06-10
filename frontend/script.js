@@ -15,7 +15,7 @@ function logout() {
 async function showMemories() {
 
     let response = await fetch(
-        "http://127.0.0.1:8000/memories",
+        "https://study-mentor-ai.onrender.com/memories",
         {
             method: "POST",
             headers: {
@@ -95,7 +95,7 @@ async function sendMessage() {
         chatBox.scrollHeight;
 
     let response = await fetch(
-        "http://127.0.0.1:8000/chat",
+        "https://study-mentor-ai.onrender.com/chat",
         {
             method: "POST",
             headers: {
