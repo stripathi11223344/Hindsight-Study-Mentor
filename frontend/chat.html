@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Mentor AI</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+    <div class="header">
+
+        <div>
+            <h2>🎓 Study Mentor AI</h2>
+            <p id="welcome"></p>
+        </div>
+
+        <div>
+    <button onclick="showMemories()">
+        Show Memories
+    </button>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+</div>
+
+    </div>
+
+    <div class="chat-container">
+        <div id="memory-panel"></div>
+
+        <div id="chat-box"></div>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="message"
+                placeholder="Ask anything..."
+            >
+
+            <button onclick="sendMessage()">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

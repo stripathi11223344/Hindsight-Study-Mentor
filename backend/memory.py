@@ -9,27 +9,28 @@ client = Hindsight(
     api_key=os.getenv("HINDSIGHT_API_KEY")
 )
 
-BANK_ID = "study-mentor"
+def get_bank_id(username):
+    return f"user_{username.lower()}"
 
-def create_bank():
+def create_bank(username):
     try:
         client.create_bank(
-            bank_id=BANK_ID,
-            name="Study Mentor"
+            bank_id=get_bank_id(username),
+            name=username
         )
         print("Bank created")
     except:
         print("Bank already exists")
 
-def save_memory(text):
+def save_memory(text, username):
     client.retain(
-        bank_id=BANK_ID,
+        bank_id=get_bank_id(username),
         content=text
     )
 
-def recall_memory(query):
+def recall_memory(query, username):
     result = client.recall(
-        bank_id=BANK_ID,
+        bank_id=get_bank_id(username),
         query=query
     )
 

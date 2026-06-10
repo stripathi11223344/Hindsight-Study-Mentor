@@ -4,9 +4,9 @@ from memory import recall_memory
 
 client = Groq(api_key=GROQ_API_KEY)
 
-def ask_agent(user_message):
+def ask_agent(user_message, username):
 
-    memories = recall_memory(user_message)
+    memories = recall_memory(user_message, username)
 
     memory_context = "\n".join(memories)
 

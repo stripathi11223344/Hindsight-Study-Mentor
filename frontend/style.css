@@ -1,28 +1,86 @@
 body{
-    font-family: Arial;
-    background:#f4f4f4;
+    margin:0;
+    padding:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#f0f4f8;
 }
 
 .container{
-    width:700px;
-    margin:auto;
-    margin-top:50px;
+    width:800px;
+    margin:30px auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.1);
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:20px;
+}
+
+#username{
+    width:96%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:16px;
 }
 
 #chat-box{
-    height:400px;
-    background:white;
-    border:1px solid gray;
-    padding:10px;
-    overflow-y:scroll;
-    margin-bottom:10px;
+    height:450px;
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:15px;
+    overflow-y:auto;
+    margin-bottom:15px;
 }
 
-input{
-    width:80%;
-    padding:10px;
+#message{
+    width:75%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:16px;
 }
 
 button{
+    padding:12px 20px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    margin-left:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#chat-box p{
+    margin:10px 0;
     padding:10px;
+    border-radius:10px;
+    background:white;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05);
+}
+
+.user-message{
+    background:#dbeafe;
+    padding:12px;
+    border-radius:12px;
+    margin:10px 0;
+    text-align:right;
+}
+
+.agent-message{
+    background:#f3f4f6;
+    padding:12px;
+    border-radius:12px;
+    margin:10px 0;
 }
