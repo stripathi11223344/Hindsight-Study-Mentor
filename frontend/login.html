@@ -1,32 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Study Mentor AI</title>
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
 
     <div class="login-card">
 
-        <h1>🎓 Study Mentor AI</h1>
+        <div class="logo">
+            🎓
+        </div>
 
-        <p>
-            Memory Powered Learning Assistant
+        <h1>Study Mentor AI</h1>
+
+        <p class="subtitle">
+            Memory-Powered Learning Assistant
+        </p>
+
+        <p class="description">
+            Personalized AI mentor that remembers your
+            learning preferences, goals, weak subjects,
+            and study habits.
         </p>
 
         <input
             type="text"
             id="username"
             placeholder="Enter your name"
+            autocomplete="off"
         >
 
         <button onclick="login()">
-            Start Learning
+            Start Learning →
         </button>
+
+        <div class="features">
+
+            <div class="feature">
+                🧠 Long-Term Memory
+            </div>
+
+            <div class="feature">
+                📚 Personalized Learning
+            </div>
+
+            <div class="feature">
+                ⚡ Powered by Groq
+            </div>
+
+        </div>
 
     </div>
 
     <script src="login.js"></script>
 
 </body>
+
 </html>

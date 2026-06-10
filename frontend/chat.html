@@ -14,39 +14,57 @@
         </div>
 
         <div>
-    <button onclick="showMemories()">
-        Show Memories
-    </button>
+            <button onclick="showMemories()">
+                Memories
+            </button>
 
-    <button onclick="logout()">
-        Logout
-    </button>
-</div>
+            <button onclick="logout()">
+                Logout
+            </button>
+        </div>
 
     </div>
 
-    <div class="chat-container">
-        <div id="memory-panel"></div>
+    <div class="main-container">
 
-        <div id="chat-box"></div>
+        <div id="memory-panel">
 
-        <div class="input-area">
+            <h3>📚 Stored Knowledge</h3>
 
-            <input
-                type="text"
-                id="message"
-                placeholder="Ask anything..."
-            >
+            <p>
+                Click Memories to load.
+            </p>
 
-            <button onclick="sendMessage()">
-                Send
-            </button>
+        </div>
+
+        <div class="chat-section">
+
+            <div id="chat-box"></div>
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="message"
+                    placeholder="Ask anything..."
+                >
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
     <script src="script.js"></script>
+
+
+    <div class="footer">
+        Powered by Groq + Hindsight Memory
+    </div>
 
 </body>
 </html>

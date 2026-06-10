@@ -53,3 +53,32 @@ button{
 button:hover{
     background:#1d4ed8;
 }
+
+.logo{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#2563eb;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.description{
+    color:#64748b;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.features{
+    margin-top:25px;
+}
+
+.feature{
+    background:#f1f5f9;
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px;
+    color:#334155;
+}

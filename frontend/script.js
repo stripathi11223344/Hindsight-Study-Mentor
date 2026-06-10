@@ -37,10 +37,18 @@ async function showMemories() {
     panel.innerHTML =
         "<h3>📚 Stored Knowledge</h3>";
 
-    data.memories.forEach(memory => {
+    panel.style.display = "block";
 
-        panel.innerHTML +=
-            `<p>• ${memory}</p>`;
+    panel.innerHTML =
+    "<h3>📚 Stored Knowledge</h3><hr>";
+
+    let uniqueMemories =
+        [...new Set(data.memories)];
+
+    uniqueMemories.forEach(memory => {
+
+    panel.innerHTML +=
+        `<p>• ${memory}</p>`;
 
     });
 }
@@ -79,7 +87,7 @@ async function sendMessage() {
 
     chatBox.innerHTML += `
         <div id="loading" class="agent-message">
-            🤖 Thinking...
+            🤖 Analyzing your learning profile...
         </div>
     `;
 
@@ -118,4 +126,50 @@ async function sendMessage() {
 
     chatBox.scrollTop =
         chatBox.scrollHeight;
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        let input =
+            document.getElementById("message");
+
+        if(input){
+
+            input.addEventListener(
+                "keypress",
+                function(event){
+
+                    if(event.key === "Enter"){
+                        sendMessage();
+                    }
+
+                }
+            );
+
+        }
+
+    }
+);
+
+window.onload = function(){
+
+    let chatBox =
+        document.getElementById("chat-box");
+
+    if(chatBox){
+
+        chatBox.innerHTML += `
+            <div class="agent-message">
+                <b>🤖 Study Mentor</b><br>
+                Welcome ${username}!<br><br>
+                I can remember your learning preferences,
+                goals and weak subjects to help you study
+                more effectively.
+            </div>
+        `;
+
+    }
+
 }

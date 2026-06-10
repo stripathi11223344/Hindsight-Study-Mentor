@@ -48,6 +48,20 @@ def chat(request: ChatRequest):
     print("REFLECTION:", reflection)
 
     if reflection != "NONE":
+
+        existing_memories = recall_memory(
+        reflection,
+        request.username
+    )
+
+    duplicate = False
+
+    for memory in existing_memories:
+        if reflection.lower() == memory.lower():
+            duplicate = True
+            break
+
+    if not duplicate:
         save_memory(
             reflection,
             request.username
