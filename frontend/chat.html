@@ -1,70 +1,1726 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Study Mentor AI</title>
-    <link rel="stylesheet" href="chat.css">
+
+
+    <!-- ==================================================
+         MATHJAX CONFIGURATION
+    ================================================== -->
+
+    <script>
+
+        window.MathJax = {
+
+            tex: {
+
+                inlineMath: [
+                    ['\\(', '\\)'],
+                    ['$', '$']
+                ],
+
+                displayMath: [
+                    ['\\[', '\\]'],
+                    ['$$', '$$']
+                ]
+
+            },
+
+            options: {
+
+                skipHtmlTags: [
+                    'script',
+                    'noscript',
+                    'style',
+                    'textarea',
+                    'pre',
+                    'code'
+                ]
+
+            },
+
+            svg: {
+                fontCache: 'global'
+            }
+
+        };
+
+    </script>
+
+
+    <!-- ==================================================
+         MATHJAX
+    ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- ==================================================
+         MARKED.JS
+    ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+    <!-- ==================================================
+         DOMPURIFY
+    ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+
+    <!-- ==================================================
+         STYLING
+    ================================================== -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+
+            min-height: 100vh;
+        }
+
+
+        /* ==================================================
+           MAIN CONTAINER
+        ================================================== */
+
+        .container {
+
+            width: 95%;
+
+            max-width: 1200px;
+
+            height: 92vh;
+
+            margin:
+                4vh auto;
+
+            background: white;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0, 0, 0, 0.12);
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* ==================================================
+           HEADER
+        ================================================== */
+
+        .header {
+
+            height: 75px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            padding:
+                15px 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            z-index: 10;
+        }
+
+
+        .header-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .logo {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                rgba(255, 255, 255, 0.18);
+
+            font-size: 23px;
+        }
+
+
+        .header-title {
+
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .header-subtitle {
+
+            margin: 3px 0 0;
+
+            font-size: 13px;
+
+            opacity: 0.85;
+        }
+
+
+        /* ==================================================
+           HEADER BUTTONS
+        ================================================== */
+
+        .header-buttons {
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .header-button {
+
+            border: none;
+
+            background:
+                rgba(255, 255, 255, 0.16);
+
+            color: white;
+
+            padding:
+                9px 14px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .header-button:hover {
+
+            background:
+                rgba(255, 255, 255, 0.28);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* ==================================================
+           WELCOME
+        ================================================== */
+
+        .welcome-area {
+
+            padding:
+                12px 20px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            background:
+                #fafafa;
+
+            flex-shrink: 0;
+        }
+
+
+        #welcome {
+
+            margin: 0;
+
+            font-size: 17px;
+
+            color: #1f2937;
+
+            font-weight: 600;
+        }
+
+
+        /* ==================================================
+           MAIN CONTENT
+        ================================================== */
+
+        .main-content {
+
+            flex: 1;
+
+            min-height: 0;
+
+            display: flex;
+
+            overflow: hidden;
+        }
+
+
+        /* ==================================================
+           MEMORY SIDEBAR
+        ================================================== */
+
+        .memory-sidebar {
+
+            width: 280px;
+
+            flex-shrink: 0;
+
+            background:
+                #fafafa;
+
+            border-right:
+                1px solid #e5e7eb;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition:
+                width 0.3s ease;
+
+            overflow: hidden;
+        }
+
+
+        /* ==================================================
+           COLLAPSED SIDEBAR
+        ================================================== */
+
+        .memory-sidebar.collapsed {
+
+            width: 62px;
+        }
+
+
+        /* ==================================================
+           MEMORY HEADER
+        ================================================== */
+
+        .memory-header {
+
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            padding:
+                0 12px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            background:
+                white;
+        }
+
+
+        .memory-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            white-space: nowrap;
+
+            color:
+                #312e81;
+
+            font-weight: 700;
+
+            font-size: 15px;
+        }
+
+
+        .memory-icon {
+
+            font-size: 20px;
+
+            min-width: 25px;
+
+            text-align: center;
+        }
+
+
+        /* ==================================================
+           SIDEBAR TOGGLE
+        ================================================== */
+
+        .memory-toggle {
+
+            width: 32px;
+
+            height: 32px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background:
+                #eef2ff;
+
+            color:
+                #4f46e5;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .memory-toggle:hover {
+
+            background:
+                #e0e7ff;
+
+            transform:
+                scale(1.05);
+        }
+
+
+        /* ==================================================
+           MEMORY CONTENT
+        ================================================== */
+
+        .memory-content {
+
+            flex: 1;
+
+            min-height: 0;
+
+            padding:
+                15px;
+
+            overflow-y: auto;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ==================================================
+           SEARCH
+        ================================================== */
+
+        .memory-search {
+
+            width: 100%;
+
+            padding:
+                10px 12px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius:
+                9px;
+
+            outline: none;
+
+            font-size: 13px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .memory-search:focus {
+
+            border-color:
+                #6366f1;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(99, 102, 241, 0.10);
+        }
+
+
+        /* ==================================================
+           MEMORY LIST
+        ================================================== */
+
+        #memory-panel {
+
+            display: block;
+
+            padding: 0;
+
+            background: transparent;
+
+            border: none;
+
+            max-height: none;
+
+            overflow: visible;
+        }
+
+
+        #memory-panel h3 {
+
+            display: none;
+        }
+
+
+        #memory-panel hr {
+
+            display: none;
+        }
+
+
+        #memory-panel p {
+
+            background:
+                white;
+
+            padding:
+                10px 11px;
+
+            border-radius:
+                9px;
+
+            border:
+                1px solid #e5e7eb;
+
+            margin:
+                7px 0;
+
+            font-size: 13px;
+
+            line-height: 1.45;
+
+            color:
+                #374151;
+        }
+
+
+        /* ==================================================
+           MEMORY FOOTER
+        ================================================== */
+
+        .memory-footer {
+
+            padding:
+                12px;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            background:
+                white;
+
+            flex-shrink: 0;
+        }
+
+
+        .refresh-button {
+
+            width: 100%;
+
+            border: none;
+
+            padding:
+                9px;
+
+            border-radius:
+                8px;
+
+            background:
+                #eef2ff;
+
+            color:
+                #4338ca;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .refresh-button:hover {
+
+            background:
+                #e0e7ff;
+        }
+
+
+        /* ==================================================
+           COLLAPSED MEMORY SIDEBAR
+        ================================================== */
+
+        .memory-sidebar.collapsed
+        .memory-title-text,
+
+        .memory-sidebar.collapsed
+        .memory-content,
+
+        .memory-sidebar.collapsed
+        .memory-footer {
+
+            display: none;
+        }
+
+
+        .memory-sidebar.collapsed
+        .memory-header {
+
+            justify-content:
+                center;
+
+            padding: 0;
+        }
+
+
+        .memory-sidebar.collapsed
+        .memory-toggle {
+
+            transform:
+                rotate(180deg);
+        }
+
+
+        /* ==================================================
+           CHAT SECTION
+        ================================================== */
+
+        .chat-section {
+
+            flex: 1;
+
+            min-width: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            overflow: hidden;
+        }
+
+
+        /* ==================================================
+           CHAT BOX
+        ================================================== */
+
+        #chat-box {
+
+            flex: 1;
+
+            min-height: 0;
+
+            overflow-y: auto;
+
+            padding:
+                20px 25px;
+
+            background:
+                #f8fafc;
+
+            scroll-behavior:
+                smooth;
+        }
+
+
+        /* ==================================================
+           USER MESSAGE
+        ================================================== */
+
+        .user-message {
+
+            max-width: 78%;
+
+            margin:
+                12px 0 12px auto;
+
+            padding:
+                13px 16px;
+
+            background:
+                #4f46e5;
+
+            color: white;
+
+            border-radius:
+                16px 16px 4px 16px;
+
+            line-height: 1.6;
+
+            word-wrap: break-word;
+
+            box-shadow:
+                0 3px 8px
+                rgba(79, 70, 229, 0.18);
+        }
+
+
+        /* ==================================================
+           AI MESSAGE
+        ================================================== */
+
+        .agent-message {
+
+            max-width: 82%;
+
+            margin:
+                15px auto 15px 0;
+
+            padding:
+                16px 18px;
+
+            background: white;
+
+            color: #1f2937;
+
+            border-radius:
+                16px 16px 16px 4px;
+
+            line-height: 1.65;
+
+            box-shadow:
+                0 3px 10px
+                rgba(0, 0, 0, 0.08);
+
+            border:
+                1px solid #e5e7eb;
+
+            word-wrap: break-word;
+        }
+
+
+        /* ==================================================
+           AGENT NAME
+        ================================================== */
+
+        .agent-name {
+
+            font-weight: bold;
+
+            color:
+                #4f46e5;
+
+            margin-bottom:
+                9px;
+        }
+
+
+        /* ==================================================
+           AI CONTENT
+        ================================================== */
+
+        .ai-content {
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ==================================================
+           MARKDOWN HEADINGS
+        ================================================== */
+
+        .ai-content h1,
+        .ai-content h2,
+        .ai-content h3,
+        .ai-content h4 {
+
+            color:
+                #312e81;
+
+            margin-top:
+                18px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .ai-content h1 {
+
+            font-size: 24px;
+        }
+
+
+        .ai-content h2 {
+
+            font-size: 21px;
+        }
+
+
+        .ai-content h3 {
+
+            font-size: 18px;
+        }
+
+
+        /* ==================================================
+           PARAGRAPHS
+        ================================================== */
+
+        .ai-content p {
+
+            margin:
+                9px 0;
+        }
+
+
+        /* ==================================================
+           LISTS
+        ================================================== */
+
+        .ai-content ul,
+        .ai-content ol {
+
+            padding-left:
+                25px;
+
+            margin:
+                10px 0;
+        }
+
+
+        .ai-content li {
+
+            margin:
+                5px 0;
+        }
+
+
+        /* ==================================================
+           CODE
+        ================================================== */
+
+        .ai-content code {
+
+            background:
+                #eef2ff;
+
+            color:
+                #4338ca;
+
+            padding:
+                2px 6px;
+
+            border-radius:
+                5px;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+            font-size:
+                0.92em;
+        }
+
+
+        .ai-content pre {
+
+            background:
+                #111827;
+
+            color:
+                #f9fafb;
+
+            padding:
+                16px;
+
+            border-radius:
+                10px;
+
+            overflow-x:
+                auto;
+
+            margin:
+                14px 0;
+
+            line-height:
+                1.55;
+        }
+
+
+        .ai-content pre code {
+
+            background:
+                transparent;
+
+            color:
+                inherit;
+
+            padding: 0;
+
+            border-radius: 0;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+            font-size:
+                14px;
+        }
+
+
+        /* ==================================================
+           BLOCKQUOTE
+        ================================================== */
+
+        .ai-content blockquote {
+
+            margin:
+                12px 0;
+
+            padding:
+                8px 15px;
+
+            border-left:
+                4px solid #6366f1;
+
+            background:
+                #f5f3ff;
+
+            color:
+                #4b5563;
+        }
+
+
+        /* ==================================================
+           HORIZONTAL RULE
+        ================================================== */
+
+        .ai-content hr {
+
+            border: 0;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            margin:
+                18px 0;
+        }
+
+
+        /* ==================================================
+           TABLE
+        ================================================== */
+
+        .ai-content table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+
+            margin:
+                15px 0;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                8px;
+        }
+
+
+        .ai-content th {
+
+            background:
+                #4f46e5;
+
+            color: white;
+
+            padding:
+                10px;
+
+            border:
+                1px solid #ddd;
+
+            text-align:
+                left;
+        }
+
+
+        .ai-content td {
+
+            padding:
+                10px;
+
+            border:
+                1px solid #ddd;
+
+            background:
+                white;
+        }
+
+
+        .ai-content tr:nth-child(even) td {
+
+            background:
+                #f9fafb;
+        }
+
+
+        /* ==================================================
+           MATHJAX
+        ================================================== */
+
+        .ai-content mjx-container {
+
+            overflow-x:
+                auto;
+
+            overflow-y:
+                hidden;
+
+            max-width:
+                100%;
+        }
+
+
+        .ai-content mjx-container[display="true"] {
+
+            margin:
+                18px 0 !important;
+
+            padding:
+                5px 0;
+        }
+
+
+        /* ==================================================
+           INPUT AREA
+        ================================================== */
+
+        .input-area {
+
+            display: flex;
+
+            gap: 10px;
+
+            padding:
+                15px 20px;
+
+            background: white;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            flex-shrink: 0;
+        }
+
+
+        #message {
+
+            flex: 1;
+
+            min-height:
+                50px;
+
+            max-height:
+                150px;
+
+            resize:
+                vertical;
+
+            padding:
+                13px 15px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius:
+                12px;
+
+            outline: none;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size:
+                15px;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        #message:focus {
+
+            border-color:
+                #6366f1;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(99, 102, 241, 0.12);
+        }
+
+
+        /* ==================================================
+           SEND BUTTON
+        ================================================== */
+
+        .send-button {
+
+            align-self:
+                flex-end;
+
+            border: none;
+
+            padding:
+                13px 22px;
+
+            min-height:
+                50px;
+
+            border-radius:
+                12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size:
+                15px;
+
+            font-weight:
+                600;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .send-button:hover {
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 5px 12px
+                rgba(79, 70, 229, 0.25);
+        }
+
+
+        .send-button:active {
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* ==================================================
+           SCROLLBARS
+        ================================================== */
+
+        #chat-box::-webkit-scrollbar,
+        .memory-content::-webkit-scrollbar {
+
+            width: 7px;
+        }
+
+
+        #chat-box::-webkit-scrollbar-thumb,
+        .memory-content::-webkit-scrollbar-thumb {
+
+            background:
+                #c7d2fe;
+
+            border-radius:
+                10px;
+        }
+
+
+        #chat-box::-webkit-scrollbar-track,
+        .memory-content::-webkit-scrollbar-track {
+
+            background:
+                transparent;
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 750px) {
+
+            .container {
+
+                width: 100%;
+
+                height: 100vh;
+
+                margin: 0;
+
+                border-radius: 0;
+            }
+
+
+            .header {
+
+                height: 68px;
+
+                padding:
+                    12px 15px;
+            }
+
+
+            .header-title {
+
+                font-size:
+                    18px;
+            }
+
+
+            .header-subtitle {
+
+                display:
+                    none;
+            }
+
+
+            .header-button {
+
+                padding:
+                    7px 10px;
+
+                font-size:
+                    12px;
+            }
+
+
+            .memory-sidebar {
+
+                width: 230px;
+            }
+
+
+            .memory-sidebar.collapsed {
+
+                width: 52px;
+            }
+
+
+            .agent-message,
+            .user-message {
+
+                max-width:
+                    92%;
+            }
+
+
+            #chat-box {
+
+                padding:
+                    15px;
+            }
+
+
+            .input-area {
+
+                padding:
+                    10px;
+            }
+
+
+            .send-button {
+
+                padding:
+                    10px 15px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-    <div class="header">
 
-        <div>
-            <h2>🎓 Study Mentor AI</h2>
-            <p id="welcome"></p>
-        </div>
+    <!-- ==================================================
+         MAIN CONTAINER
+    ================================================== -->
 
-        <div>
-            <button onclick="showMemories()">
-                Memories
-            </button>
+    <div class="container">
 
-            <button onclick="logout()">
-                Logout
-            </button>
-        </div>
 
-    </div>
+        <!-- ==================================================
+             HEADER
+        ================================================== -->
 
-    <div class="main-container">
+        <div class="header">
 
-        <div id="memory-panel">
 
-            <h3>📚 Stored Knowledge</h3>
+            <div class="header-left">
 
-            <p>
-                Click Memories to load.
-            </p>
 
-        </div>
+                <div class="logo">
+                    🤖
+                </div>
 
-        <div class="chat-section">
 
-            <div id="chat-box"></div>
+                <div>
 
-            <div class="input-area">
+                    <h1 class="header-title">
+                        Study Mentor AI
+                    </h1>
 
-                <input
-                    type="text"
-                    id="message"
-                    placeholder="Ask anything..."
-                >
+                    <p class="header-subtitle">
+                        Your Personal AI Study Mentor
+                    </p>
 
-                <button onclick="sendMessage()">
-                    Send
-                </button>
+                </div>
+
 
             </div>
 
+
+            <!-- ==================================================
+                 HEADER BUTTONS
+            ================================================== -->
+
+            <div class="header-buttons">
+
+                <!-- DASHBOARD BUTTON -->
+                <button
+                    class="header-button"
+                    onclick="openDashboard()"
+                >
+                    📊 Dashboard
+                </button>
+                <!-- PROFILE BUTTON -->
+
+                <button
+                    class="header-button"
+                    onclick="openProfile()"
+                >
+                    👤 Profile
+                </button>
+
+
+                <!-- LOGOUT BUTTON -->
+
+                <button
+                    class="header-button"
+                    onclick="logout()"
+                >
+                    🚪 Logout
+                </button>
+
+
+            </div>
+
+
         </div>
 
+
+        <!-- ==================================================
+             WELCOME
+        ================================================== -->
+
+        <div class="welcome-area">
+
+
+            <p id="welcome">
+                Welcome, Student
+            </p>
+
+
+        </div>
+
+
+        <!-- ==================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <div class="main-content">
+
+
+            <!-- ==================================================
+                 LEFT MEMORY SIDEBAR
+            ================================================== -->
+
+            <aside
+                id="memory-sidebar"
+                class="memory-sidebar"
+            >
+
+
+                <!-- ==================================================
+                     MEMORY HEADER
+                ================================================== -->
+
+                <div class="memory-header">
+
+
+                    <div class="memory-title">
+
+
+                        <span class="memory-icon">
+                            📚
+                        </span>
+
+
+                        <span class="memory-title-text">
+                            Memories
+                        </span>
+
+
+                    </div>
+
+
+                    <button
+                        class="memory-toggle"
+                        id="memory-toggle"
+                        title="Collapse memories"
+                    >
+                        ◀
+                    </button>
+
+
+                </div>
+
+
+                <!-- ==================================================
+                     MEMORY CONTENT
+                ================================================== -->
+
+                <div class="memory-content">
+
+
+                    <!-- Search -->
+
+                    <input
+                        type="text"
+                        id="memory-search"
+                        class="memory-search"
+                        placeholder="🔎 Search memories..."
+                    >
+
+
+                    <!-- Existing memory panel -->
+
+                    <div id="memory-panel">
+
+
+                        <p>
+                            Click Refresh to load
+                            your stored memories.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ==================================================
+                     MEMORY FOOTER
+                ================================================== -->
+
+                <div class="memory-footer">
+
+
+                    <button
+                        class="refresh-button"
+                        onclick="showMemories()"
+                    >
+                        🔄 Refresh Memories
+                    </button>
+
+
+                </div>
+
+
+            </aside>
+
+
+            <!-- ==================================================
+                 CHAT SECTION
+            ================================================== -->
+
+            <section class="chat-section">
+
+
+                <!-- ==================================================
+                     CHAT BOX
+                ================================================== -->
+
+                <div id="chat-box">
+
+
+                    <!--
+                        AI and user messages are
+                        inserted here by script.js.
+                    -->
+
+
+                </div>
+
+
+                <!-- ==================================================
+                     INPUT AREA
+                ================================================== -->
+
+                <div class="input-area">
+
+
+                    <textarea
+                        id="message"
+                        placeholder="Ask Study Mentor anything..."
+                        rows="1"
+                    ></textarea>
+
+
+                    <button
+                        class="send-button"
+                        onclick="sendMessage()"
+                    >
+                        Send ➤
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
     </div>
+
+
+    <!-- ==================================================
+         SIDEBAR + SEARCH JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+
+        // ==================================================
+        // PROFILE NAVIGATION
+        // ==================================================
+
+        function openProfile() {
+
+            window.location.href = "profile.html";
+
+        }
+
+
+        // ==================================================
+        // MEMORY SIDEBAR TOGGLE
+        // ==================================================
+
+        const memorySidebar =
+            document.getElementById(
+                "memory-sidebar"
+            );
+
+
+        const memoryToggle =
+            document.getElementById(
+                "memory-toggle"
+            );
+
+
+        memoryToggle.addEventListener(
+            "click",
+            function() {
+
+
+                memorySidebar.classList.toggle(
+                    "collapsed"
+                );
+
+
+            }
+        );
+
+
+        // ==================================================
+        // MEMORY SEARCH
+        // ==================================================
+
+        const memorySearch =
+            document.getElementById(
+                "memory-search"
+            );
+
+
+        memorySearch.addEventListener(
+            "input",
+            function() {
+
+
+                const searchText =
+                    memorySearch.value
+                        .toLowerCase()
+                        .trim();
+
+
+                const memoryItems =
+                    document.querySelectorAll(
+                        "#memory-panel p"
+                    );
+
+
+                memoryItems.forEach(
+                    function(item) {
+
+
+                        const text =
+                            item.textContent
+                                .toLowerCase();
+
+
+                        if (
+                            !searchText ||
+                            text.includes(searchText)
+                        ) {
+
+
+                            item.style.display =
+                                "block";
+
+
+                        }
+
+                        else {
+
+
+                            item.style.display =
+                                "none";
+
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+    </script>
+    <script src="config.js"></script>
+
+
+
+    <!-- ==================================================
+         MAIN SCRIPT
+    ================================================== -->
 
     <script src="script.js"></script>
 
+    <script>
 
-    <div class="footer">
-        Powered by Groq + Hindsight Memory
-    </div>
+    function openDashboard() {
+        window.location.href = "dashboard.html";
+    }
+
+    function openProfile() {
+        window.location.href = "profile.html";
+    }
+
+    </script>
+
 
 </body>
+
 </html>

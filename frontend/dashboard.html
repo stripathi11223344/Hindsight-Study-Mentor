@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | Study Mentor AI</title>
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div class="app">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <!-- Logo -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🧠
+            </div>
+
+            <div class="brand-text">
+
+                <div class="brand-title">
+                    Study Mentor
+                </div>
+
+                <div class="brand-subtitle">
+                    AI Learning Platform
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="navigation">
+
+
+            <a
+                href="dashboard.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    📊
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="chat.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    💬
+                </span>
+
+                <span>
+                    AI Tutor
+                </span>
+
+            </a>
+
+
+            <a
+                href="chat.html"
+                class="nav-item"
+                onclick="openMemoriesFromDashboard(event)"
+            >
+
+                <span class="nav-icon">
+                    🧠
+                </span>
+
+                <span>
+                    Memories
+                </span>
+
+            </a>
+
+
+            <a
+                href="#progress"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    📈
+                </span>
+
+                <span>
+                    Progress
+                </span>
+
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    👤
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- Sidebar bottom -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="ai-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        AI Mentor Online
+                    </strong>
+
+                    <small>
+                        Ready to help you
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-sidebar"
+                onclick="logout()"
+            >
+
+                🚪 Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =============================================
+             TOP BAR
+        ============================================== -->
+
+        <header class="topbar">
+
+
+            <button
+                class="mobile-menu"
+                onclick="toggleSidebar()"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+
+            <div class="page-heading">
+
+                <span class="page-label">
+                    STUDY OVERVIEW
+                </span>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+
+                <div class="user-badge">
+
+                    <div
+                        class="avatar"
+                        id="user-avatar"
+                    >
+                        S
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong id="username">
+                            Student
+                        </strong>
+
+                        <span>
+                            Learner
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="profile.html"
+                    class="profile-button"
+                >
+                    ⚙️
+                </a>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =============================================
+             DASHBOARD BODY
+        ============================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- =========================================
+                 WELCOME CARD
+            ========================================== -->
+
+            <section class="welcome-card">
+
+
+                <div class="welcome-content">
+
+                    <span class="welcome-tag">
+                        ✨ PERSONALIZED LEARNING
+                    </span>
+
+                    <h2>
+                        Welcome back,
+                        <span id="welcome-name">
+                            Student
+                        </span>!
+                    </h2>
+
+                    <p id="welcome-message">
+
+                        Your AI study mentor is ready to
+                        continue helping you learn.
+
+                    </p>
+
+
+                    <a
+                        href="chat.html"
+                        class="start-learning-button"
+                    >
+
+                        <span>
+                            💬
+                        </span>
+
+                        Continue Learning
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <div class="welcome-illustration">
+
+                    <div class="orb orb-one"></div>
+
+                    <div class="orb orb-two"></div>
+
+                    <div class="brain">
+
+                        🧠
+
+                    </div>
+
+                    <div class="floating-card card-one">
+                        📚
+                    </div>
+
+                    <div class="floating-card card-two">
+                        💡
+                    </div>
+
+                    <div class="floating-card card-three">
+                        🎯
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================================
+                 QUICK STATS
+            ========================================== -->
+
+            <section class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        📚
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Topics Studied
+                        </span>
+
+                        <strong id="topics-count">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <span class="stat-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🎯
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Study Goals
+                        </span>
+
+                        <strong id="goals-count">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <span class="stat-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🧠
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Memories
+                        </span>
+
+                        <strong id="memory-count">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <span class="stat-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        💬
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Questions Asked
+                        </span>
+
+                        <strong id="question-count">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <span class="stat-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================================
+                 TWO COLUMN AREA
+            ========================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- =====================================
+                     LEFT COLUMN
+                ====================================== -->
+
+                <div class="dashboard-left">
+
+
+                    <!-- =================================
+                         CURRENT LEARNING
+                    ================================== -->
+
+                    <section class="panel current-learning-panel">
+
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-label">
+                                    FOCUS
+                                </span>
+
+                                <h3>
+                                    Current Learning
+                                </h3>
+
+                            </div>
+
+                            <span class="panel-icon">
+                                🎓
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="learning-content"
+                            id="current-learning-content"
+                        >
+
+                            <div class="empty-learning">
+
+                                <div>
+                                    📖
+                                </div>
+
+                                <h4>
+                                    Your learning journey
+                                </h4>
+
+                                <p>
+                                    Add your current learning
+                                    topics in your profile.
+                                </p>
+
+                                <a href="profile.html">
+                                    Update Profile →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================
+                         SUBJECT PROGRESS
+                    ================================== -->
+
+                    <section
+                        class="panel progress-panel"
+                        id="progress"
+                    >
+
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-label">
+                                    PROGRESS
+                                </span>
+
+                                <h3>
+                                    Subject Progress
+                                </h3>
+
+                            </div>
+
+                            <span class="panel-icon">
+                                📈
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="subject-list"
+                            id="subject-list"
+                        >
+
+                            <div class="progress-empty">
+
+                                <span>
+                                    📊
+                                </span>
+
+                                <p>
+                                    Subject progress will appear
+                                    here as you learn.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                </div>
+
+
+
+                <!-- =====================================
+                     RIGHT COLUMN
+                ====================================== -->
+
+                <div class="dashboard-right">
+
+
+                    <!-- =================================
+                         PROFILE SNAPSHOT
+                    ================================== -->
+
+                    <section class="panel profile-snapshot">
+
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-label">
+                                    ABOUT YOU
+                                </span>
+
+                                <h3>
+                                    Learning Profile
+                                </h3>
+
+                            </div>
+
+                            <a
+                                href="profile.html"
+                                class="view-link"
+                            >
+                                Edit
+                            </a>
+
+                        </div>
+
+
+                        <div class="profile-items">
+
+
+                            <div class="profile-item">
+
+                                <div class="profile-item-icon">
+                                    📚
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Learning Style
+                                    </span>
+
+                                    <strong
+                                        id="learning-style"
+                                    >
+                                        Not set
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-item">
+
+                                <div class="profile-item-icon">
+                                    🎯
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Career Goal
+                                    </span>
+
+                                    <strong
+                                        id="career-goal"
+                                    >
+                                        Not set
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-item">
+
+                                <div class="profile-item-icon">
+                                    💻
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Programming Skills
+                                    </span>
+
+                                    <strong
+                                        id="programming-skills"
+                                    >
+                                        Not set
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================
+                         WEAK AREAS
+                    ================================== -->
+
+                    <section class="panel weak-areas-panel">
+
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-label">
+                                    FOCUS AREAS
+                                </span>
+
+                                <h3>
+                                    Areas to Improve
+                                </h3>
+
+                            </div>
+
+                            <span class="panel-icon">
+                                🔍
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="weak-subjects"
+                            id="weak-subjects"
+                        >
+
+                            <div class="weak-empty">
+
+                                <span>
+                                    🌱
+                                </span>
+
+                                <p>
+                                    Add your weak subjects in
+                                    your profile to get
+                                    personalized guidance.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================
+                         QUICK ACTIONS
+                    ================================== -->
+
+                    <section class="panel quick-actions-panel">
+
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-label">
+                                    QUICK ACTIONS
+                                </span>
+
+                                <h3>
+                                    Keep Learning
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+
+                            <a
+                                href="chat.html"
+                                class="quick-action"
+                            >
+
+                                <span class="quick-action-icon">
+                                    💬
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Ask AI Mentor
+                                    </strong>
+
+                                    <small>
+                                        Get help with any topic
+                                    </small>
+
+                                </div>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </a>
+
+
+                            <a
+                                href="profile.html"
+                                class="quick-action"
+                            >
+
+                                <span class="quick-action-icon">
+                                    👤
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Update Profile
+                                    </strong>
+
+                                    <small>
+                                        Improve personalization
+                                    </small>
+
+                                </div>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+
+                    </section>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 RECENT ACTIVITY
+            ========================================== -->
+
+            <section class="panel activity-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-label">
+                            ACTIVITY
+                        </span>
+
+                        <h3>
+                            Recent Learning Activity
+                        </h3>
+
+                    </div>
+
+                    <span class="panel-icon">
+                        🕒
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="activity-list"
+                    id="activity-list"
+                >
+
+                    <div class="activity-empty">
+
+                        <div class="activity-empty-icon">
+                            📖
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Your learning activity will
+                                appear here
+                            </strong>
+
+                            <p>
+                                Start chatting with your AI
+                                mentor to build your activity
+                                history.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     OVERLAY FOR MOBILE SIDEBAR
+===================================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebar-overlay"
+    onclick="toggleSidebar()"
+></div>
+
+
+
+<!-- =====================================================
+     DASHBOARD JAVASCRIPT
+===================================================== -->
+<script src="config.js"></script>
+
+<script src="dashboard.js">  
+</script>
+
+
+</body>
+
+</html>

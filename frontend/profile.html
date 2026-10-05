@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Profile - Study Mentor AI</title>
+
+    <link
+        rel="stylesheet"
+        href="profile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <div class="page">
+
+
+        <!-- ==================================================
+             HEADER
+        ================================================== -->
+
+        <header class="header">
+
+
+            <div class="brand">
+
+
+                <div class="logo">
+                    🤖
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        Study Mentor AI
+                    </h1>
+
+                    <p>
+                        Student Profile
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="header-buttons">
+
+
+                <button
+                    class="header-button"
+                    onclick="goToChat()"
+                >
+                    💬 Chat
+                </button>
+
+
+                <button
+                    class="header-button"
+                    onclick="logout()"
+                >
+                    🚪 Logout
+                </button>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!-- ==================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="content">
+
+
+            <!-- ==================================================
+                 PROFILE HEADING
+            ================================================== -->
+
+            <div class="profile-heading">
+
+
+                <div>
+
+                    <h2>
+                        👤 Your Learning Profile
+                    </h2>
+
+                    <p>
+                        Tell Study Mentor about yourself so it can
+                        personalize your learning experience.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="username-display"
+                    class="username-badge"
+                >
+                    Student
+                </div>
+
+
+            </div>
+
+
+            <!-- ==================================================
+                 MESSAGE
+            ================================================== -->
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <!-- ==================================================
+                 PROFILE FORM
+            ================================================== -->
+
+            <form id="profile-form">
+
+
+                <div class="form-grid">
+
+
+                    <!-- ==================================================
+                         WEAK SUBJECTS
+                    ================================================== -->
+
+                    <div class="field">
+
+
+                        <label for="weak_subjects">
+                            📚 Weak Subjects
+                        </label>
+
+
+                        <textarea
+                            id="weak_subjects"
+                            placeholder="Example: Statistics, Mathematics"
+                        ></textarea>
+
+
+                        <small>
+                            Subjects or topics you find difficult.
+                        </small>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         STRONG SUBJECTS
+                    ================================================== -->
+
+                    <div class="field">
+
+
+                        <label for="strong_subjects">
+                            💪 Strong Subjects
+                        </label>
+
+
+                        <textarea
+                            id="strong_subjects"
+                            placeholder="Example: C++, HTML, CSS"
+                        ></textarea>
+
+
+                        <small>
+                            Subjects or areas you are confident in.
+                        </small>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         LEARNING STYLE
+                    ================================================== -->
+
+                    <div class="field">
+
+
+                        <label for="learning_style">
+                            🧠 Learning Style
+                        </label>
+
+
+                        <select id="learning_style">
+
+
+                            <option value="">
+                                Select your learning style
+                            </option>
+
+
+                            <option value="Visual">
+                                Visual
+                            </option>
+
+
+                            <option value="Practical">
+                                Practical / Hands-on
+                            </option>
+
+
+                            <option value="Step-by-step">
+                                Step-by-step
+                            </option>
+
+
+                            <option value="Examples">
+                                Learning through examples
+                            </option>
+
+
+                            <option value="Reading">
+                                Reading / Notes
+                            </option>
+
+
+                            <option value="Mixed">
+                                Mixed
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         CAREER GOAL
+                    ================================================== -->
+
+                    <div class="field">
+
+
+                        <label for="career_goal">
+                            💼 Career Goal
+                        </label>
+
+
+                        <input
+                            id="career_goal"
+                            type="text"
+                            placeholder="Example: Software Developer"
+                        >
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         GOALS
+                    ================================================== -->
+
+                    <div class="field full">
+
+
+                        <label for="goals">
+                            🎯 Academic / Study Goals
+                        </label>
+
+
+                        <textarea
+                            id="goals"
+                            placeholder="Example: Prepare for placements, improve DSA, score well in exams..."
+                        ></textarea>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         PROGRAMMING SKILLS
+                    ================================================== -->
+
+                    <div class="field">
+
+
+                        <label for="programming_skills">
+                            💻 Programming Skills
+                        </label>
+
+
+                        <textarea
+                            id="programming_skills"
+                            placeholder="Example: C, C++, Python, Java"
+                        ></textarea>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         CURRENT LEARNING
+                    ================================================== -->
+
+                    <div class="field">
+
+
+                        <label for="current_learning">
+                            📖 Currently Learning
+                        </label>
+
+
+                        <textarea
+                            id="current_learning"
+                            placeholder="Example: Java and DSA"
+                        ></textarea>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         PERSISTENT DIFFICULTIES
+                    ================================================== -->
+
+                    <div class="field full">
+
+
+                        <label for="persistent_difficulties">
+                            ⚠️ Persistent Difficulties
+                        </label>
+
+
+                        <textarea
+                            id="persistent_difficulties"
+                            placeholder="Example: I struggle with mathematical logic and need more examples when learning new concepts."
+                        ></textarea>
+
+
+                        <small>
+                            Long-term difficulties that your AI mentor
+                            should remember.
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ==================================================
+                     ACTION BUTTONS
+                ================================================== -->
+
+                <div class="actions">
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="goToChat()"
+                    >
+                        ← Back to Chat
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="save-button"
+                        class="save-button"
+                    >
+                        💾 Save Profile
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         PROFILE JAVASCRIPT
+    ================================================== -->
+    <script src="config.js"></script>
+
+
+    <script src="profile.js"></script>
+
+
+</body>
+
+</html>

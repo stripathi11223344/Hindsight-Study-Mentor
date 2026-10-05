@@ -34,7 +34,7 @@ while True:
     reflection = generate_reflection(user_input)
 
     if reflection != "NONE":
-        save_memory(reflection)
+        save_memory(reflection, username)
         print("\n[Memory Saved]")
 
     

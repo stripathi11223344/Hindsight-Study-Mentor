@@ -1,84 +1,1322 @@
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(
-        135deg,
-        #0f172a,
-        #1e293b
-    );
-    font-family:Segoe UI;
+/* =========================================================
+   STUDY MENTOR AI
+   LOGIN PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.login-card{
-    background:white;
-    width:400px;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 8px 30px rgba(0,0,0,0.2);
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-h1{
-    color:#2563eb;
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #0d0f14;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
 }
 
-p{
-    color:gray;
-    margin-bottom:25px;
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.auth-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    background: #17191f;
 }
 
-input{
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    margin-bottom:20px;
-    box-sizing:border-box;
+
+/* =========================================================
+   LEFT LOGIN PANEL
+   ========================================================= */
+
+.login-panel {
+    width: 50%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17191f 0%,
+            #1a1c22 50%,
+            #14161b 100%
+        );
+
+    position: relative;
+
+    overflow: hidden;
 }
 
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
+
+/* subtle background glow */
+
+.login-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    background: rgba(139, 92, 246, 0.07);
+
+    top: -180px;
+    left: -180px;
+
+    filter: blur(30px);
 }
 
-button:hover{
-    background:#1d4ed8;
+
+.login-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(124, 58, 237, 0.05);
+
+    bottom: -160px;
+    right: -120px;
+
+    filter: blur(35px);
 }
 
-.logo{
-    font-size:60px;
-    margin-bottom:10px;
+
+/* =========================================================
+   LOGIN CONTENT
+   ========================================================= */
+
+.login-content {
+    width: 100%;
+    max-width: 390px;
+
+    padding: 40px;
+
+    position: relative;
+    z-index: 2;
 }
 
-.subtitle{
-    color:#2563eb;
-    font-weight:600;
-    margin-bottom:10px;
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand-small {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 55px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
 }
 
-.description{
-    color:#64748b;
-    margin-bottom:25px;
-    line-height:1.5;
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6d28d9
+        );
+
+    font-size: 17px;
+
+    box-shadow:
+        0 5px 18px rgba(124, 58, 237, 0.28);
 }
 
-.features{
-    margin-top:25px;
+
+/* =========================================================
+   LOGIN HEADING
+   ========================================================= */
+
+.login-heading {
+    margin-bottom: 30px;
 }
 
-.feature{
-    background:#f1f5f9;
-    padding:10px;
-    border-radius:10px;
-    margin-top:10px;
-    color:#334155;
+
+.login-heading h1 {
+    margin: 0 0 9px;
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.6px;
+}
+
+
+.login-heading p {
+    margin: 0;
+
+    color: #8f939d;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOGIN / REGISTER TABS
+   ========================================================= */
+
+.auth-tabs {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 4px;
+
+    padding: 4px;
+
+    margin-bottom: 25px;
+
+    border-radius: 9px;
+
+    background: #20232b;
+}
+
+
+.tab {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #858995;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.tab:hover {
+    color: #ffffff;
+
+    background: #292c35;
+}
+
+
+.tab.active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9559e8,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 4px 12px rgba(124, 58, 237, 0.2);
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #aeb1ba;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.form-group input {
+    width: 100%;
+
+    height: 43px;
+
+    padding: 0 13px;
+
+    border: 1px solid #353842;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #20232a;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input::placeholder {
+    color: #666a75;
+}
+
+
+.form-group input:hover {
+    border-color: #454955;
+}
+
+
+.form-group input:focus {
+    border-color: #8b5cf6;
+
+    background: #23262e;
+
+    box-shadow:
+        0 0 0 3px rgba(139, 92, 246, 0.10);
+}
+
+
+/* =========================================================
+   MAIN BUTTON
+   ========================================================= */
+
+.main-button {
+    width: 100%;
+
+    height: 43px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a855f7,
+            #7c3aed
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 18px rgba(124, 58, 237, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.main-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 9px 22px rgba(124, 58, 237, 0.30);
+}
+
+
+.main-button:active {
+    transform: translateY(0);
+}
+
+
+.main-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.message {
+    min-height: 18px;
+
+    margin-top: 13px;
+
+    color: #fca5a5;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.security-info {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 24px;
+
+    color: #686d78;
+
+    font-size: 11px;
+}
+
+
+.security-info span:first-child {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LOGIN FOOTER
+   ========================================================= */
+
+.login-footer {
+    margin-top: 42px;
+
+    text-align: center;
+
+    color: #555963;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   RIGHT VISUAL PANEL
+   ========================================================= */
+
+.visual-panel {
+    width: 50%;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9654e8 0%,
+            #8848dc 35%,
+            #7134c5 70%,
+            #642bb4 100%
+        );
+}
+
+
+/* =========================================================
+   PURPLE BACKGROUND CIRCLES
+   ========================================================= */
+
+.purple-circle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    pointer-events: none;
+}
+
+
+.circle-one {
+    width: 430px;
+    height: 430px;
+
+    top: -190px;
+    right: -150px;
+}
+
+
+.circle-two {
+    width: 330px;
+    height: 330px;
+
+    bottom: -160px;
+    left: -130px;
+
+    background: rgba(40, 10, 90, 0.12);
+}
+
+
+.circle-three {
+    width: 180px;
+    height: 180px;
+
+    top: 45%;
+    right: -80px;
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   VISUAL CONTENT
+   ========================================================= */
+
+.visual-content {
+    width: 100%;
+
+    max-width: 600px;
+
+    padding: 55px;
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   VISUAL HEADING
+   ========================================================= */
+
+.visual-heading {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+
+.visual-heading h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 38px;
+
+    line-height: 1.08;
+
+    font-weight: 700;
+
+    letter-spacing: -1.2px;
+}
+
+
+.visual-heading p {
+    max-width: 390px;
+
+    margin: 15px auto 0;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ILLUSTRATION AREA
+   ========================================================= */
+
+.illustration {
+    height: 330px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 5px 0 25px;
+}
+
+
+/* =========================================================
+   ILLUSTRATION GLOW
+   ========================================================= */
+
+.illustration-glow {
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    filter: blur(2px);
+}
+
+
+/* =========================================================
+   MAIN ILLUSTRATION
+   ========================================================= */
+
+.student-illustration {
+    width: 300px;
+    height: 250px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   AI BRAIN
+   ========================================================= */
+
+.ai-brain {
+    position: absolute;
+
+    top: 10px;
+    right: 32px;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.93);
+
+    font-size: 29px;
+
+    transform: rotate(8deg);
+
+    box-shadow:
+        0 12px 25px rgba(45, 12, 90, 0.20);
+
+    z-index: 6;
+}
+
+
+/* =========================================================
+   BOOK
+   ========================================================= */
+
+.book {
+    position: absolute;
+
+    width: 170px;
+    height: 115px;
+
+    bottom: 25px;
+    left: 65px;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    transform: rotate(-3deg);
+
+    box-shadow:
+        0 18px 35px rgba(45, 12, 90, 0.20);
+
+    z-index: 2;
+}
+
+
+.book-page {
+    position: absolute;
+
+    width: 50%;
+
+    height: 100%;
+
+    right: 0;
+
+    background: #f1eafe;
+
+    border-radius: 0 10px 10px 0;
+}
+
+
+.book-line {
+    position: absolute;
+
+    height: 5px;
+
+    border-radius: 5px;
+
+    background: #d7c0f6;
+
+    left: 17px;
+}
+
+
+.line-one {
+    width: 80px;
+    top: 25px;
+}
+
+
+.line-two {
+    width: 105px;
+    top: 45px;
+}
+
+
+.line-three {
+    width: 65px;
+    top: 65px;
+}
+
+
+/* =========================================================
+   STUDENT
+   ========================================================= */
+
+.student {
+    position: absolute;
+
+    width: 125px;
+    height: 180px;
+
+    bottom: 35px;
+    left: 22px;
+
+    z-index: 5;
+}
+
+
+/* Head */
+
+.student-head {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    top: 0;
+    left: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffd6ba;
+
+    font-size: 24px;
+
+    box-shadow:
+        0 5px 10px rgba(50, 15, 90, 0.10);
+}
+
+
+/* Body */
+
+.student-body {
+    position: absolute;
+
+    width: 72px;
+    height: 90px;
+
+    top: 43px;
+    left: 25px;
+
+    border-radius: 24px 24px 15px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #eee5ff
+        );
+
+    box-shadow:
+        0 8px 18px rgba(45, 12, 90, 0.14);
+}
+
+
+/* Body detail */
+
+.student-body span {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #8b5cf6;
+
+    top: 25px;
+    left: 26px;
+}
+
+
+/* Arms */
+
+.student-arm {
+    position: absolute;
+
+    width: 55px;
+    height: 16px;
+
+    border-radius: 15px;
+
+    background: #ffd6ba;
+
+    top: 58px;
+}
+
+
+.arm-left {
+    left: -12px;
+
+    transform: rotate(28deg);
+}
+
+
+.arm-right {
+    right: -8px;
+
+    transform: rotate(-30deg);
+}
+
+
+/* =========================================================
+   FLOATING CARDS
+   ========================================================= */
+
+.floating-card {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 14px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    color: #30204e;
+
+    box-shadow:
+        0 12px 28px rgba(45, 12, 90, 0.20);
+
+    z-index: 10;
+}
+
+
+.floating-card strong {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.floating-card small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8a7c9e;
+
+    font-size: 9px;
+}
+
+
+.floating-icon,
+.progress-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #f0e7ff;
+
+    font-size: 17px;
+}
+
+
+.memory-card {
+    top: 10px;
+    left: 15px;
+}
+
+
+.progress-card {
+    right: 5px;
+    bottom: 5px;
+}
+
+
+/* =========================================================
+   VISUAL FEATURES
+   ========================================================= */
+
+.visual-features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+
+.visual-feature {
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.visual-feature > span {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    font-size: 16px;
+}
+
+
+.visual-feature strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.visual-feature small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 8px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   VISUAL FOOTER
+   ========================================================= */
+
+.visual-footer {
+    position: absolute;
+
+    bottom: 22px;
+
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    font-size: 9px;
+
+    z-index: 5;
+}
+
+
+.visual-footer .technology {
+    color: rgba(255, 255, 255, 0.82);
+
+    font-weight: 600;
+}
+
+
+.visual-footer .dot {
+    opacity: 0.5;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .login-panel,
+    .visual-panel {
+        width: 50%;
+    }
+
+
+    .login-content {
+        max-width: 360px;
+
+        padding: 30px;
+    }
+
+
+    .brand-small {
+        margin-bottom: 40px;
+    }
+
+
+    .login-heading h1 {
+        font-size: 25px;
+    }
+
+
+    .visual-content {
+        padding: 35px;
+    }
+
+
+    .visual-heading h2 {
+        font-size: 30px;
+    }
+
+
+    .illustration {
+        height: 290px;
+    }
+
+
+    .student-illustration {
+        transform: scale(0.88);
+    }
+
+
+    .floating-card {
+        transform: scale(0.88);
+    }
+
+
+    .memory-card {
+        left: 0;
+    }
+
+
+    .progress-card {
+        right: 0;
+    }
+
+
+    .visual-features {
+        gap: 7px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+
+    .auth-container {
+        min-height: 100vh;
+
+        flex-direction: column;
+    }
+
+
+    .login-panel {
+        width: 100%;
+
+        min-height: auto;
+
+        order: 1;
+    }
+
+
+    .visual-panel {
+        width: 100%;
+
+        min-height: 600px;
+
+        order: 2;
+    }
+
+
+    .login-content {
+        max-width: 430px;
+
+        padding: 45px 28px;
+    }
+
+
+    .brand-small {
+        margin-bottom: 45px;
+    }
+
+
+    .visual-content {
+        padding: 45px 25px;
+    }
+
+
+    .visual-heading h2 {
+        font-size: 32px;
+    }
+
+
+    .visual-heading p {
+        font-size: 13px;
+    }
+
+
+    .illustration {
+        height: 300px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .login-content {
+        padding: 35px 22px;
+    }
+
+
+    .brand-small {
+        margin-bottom: 38px;
+    }
+
+
+    .login-heading h1 {
+        font-size: 24px;
+    }
+
+
+    .login-heading p {
+        font-size: 12px;
+    }
+
+
+    .visual-panel {
+        min-height: 560px;
+    }
+
+
+    .visual-content {
+        padding: 35px 18px;
+    }
+
+
+    .visual-heading h2 {
+        font-size: 27px;
+    }
+
+
+    .visual-heading p {
+        font-size: 12px;
+
+        max-width: 300px;
+    }
+
+
+    .illustration {
+        height: 275px;
+    }
+
+
+    .student-illustration {
+        transform: scale(0.78);
+    }
+
+
+    .floating-card {
+        transform: scale(0.72);
+    }
+
+
+    .memory-card {
+        left: -25px;
+    }
+
+
+    .progress-card {
+        right: -25px;
+    }
+
+
+    .visual-features {
+        grid-template-columns: 1fr;
+    }
+
+
+    .visual-feature {
+        min-height: 55px;
+    }
+
+
+    .visual-footer {
+        bottom: 12px;
+
+        font-size: 8px;
+    }
 }

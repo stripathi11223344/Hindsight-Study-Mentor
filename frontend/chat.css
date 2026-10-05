@@ -109,3 +109,154 @@ button:hover{
     color:#94a3b8;
     font-size:14px;
 }
+
+/* ==========================================
+   AI RESPONSE FORMATTING
+========================================== */
+
+.agent-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
+.ai-content {
+    line-height: 1.7;
+}
+
+
+/* Headings */
+
+.ai-content h1,
+.ai-content h2,
+.ai-content h3 {
+
+    margin-top: 15px;
+    margin-bottom: 8px;
+
+}
+
+
+/* Paragraphs */
+
+.ai-content p {
+
+    margin: 8px 0;
+
+}
+
+
+/* Lists */
+
+.ai-content ul,
+.ai-content ol {
+
+    padding-left: 25px;
+    margin: 10px 0;
+
+}
+
+
+.ai-content li {
+
+    margin-bottom: 5px;
+
+}
+
+
+/* Bold */
+
+.ai-content strong {
+
+    font-weight: 700;
+
+}
+
+
+/* Inline code */
+
+.ai-content code {
+
+    background: #0f172a;
+
+    padding: 3px 6px;
+
+    border-radius: 5px;
+
+    font-family: Consolas, monospace;
+
+}
+
+
+/* Code blocks */
+
+.ai-content pre {
+
+    background: #0f172a;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    margin: 12px 0;
+
+}
+
+
+.ai-content pre code {
+
+    background: transparent;
+
+    padding: 0;
+
+}
+
+
+/* Blockquotes */
+
+.ai-content blockquote {
+
+    border-left: 4px solid #3b82f6;
+
+    padding-left: 15px;
+
+    margin-left: 0;
+
+    color: #cbd5e1;
+
+}
+
+
+/* Tables */
+
+.ai-content table {
+
+    border-collapse: collapse;
+
+    width: 100%;
+
+    margin: 15px 0;
+
+}
+
+
+.ai-content th,
+.ai-content td {
+
+    border: 1px solid #475569;
+
+    padding: 8px;
+
+    text-align: left;
+
+}
+
+
+.ai-content th {
+
+    background: #334155;
+
+}

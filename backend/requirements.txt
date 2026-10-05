@@ -3,3 +3,6 @@ uvicorn
 groq
 python-dotenv
 hindsight-client
+PyJWT
+mysql-connector-python
+argon2-cffi

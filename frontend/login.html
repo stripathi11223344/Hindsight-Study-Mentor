@@ -1,61 +1,537 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Study Mentor AI</title>
-    <link rel="stylesheet" href="login.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Study Mentor AI - Login</title>
+
+    <link rel="stylesheet" href="login.css?v=2">
+
 </head>
+
 
 <body>
 
-    <div class="login-card">
 
-        <div class="logo">
-            🎓
+    <!-- =====================================================
+         MAIN AUTH CONTAINER
+    ====================================================== -->
+
+    <div class="auth-container">
+
+
+        <!-- =================================================
+             LEFT LOGIN PANEL
+        ================================================== -->
+
+        <div class="login-panel">
+
+
+            <div class="login-content">
+
+
+                <!-- Brand -->
+
+                <div class="brand-small">
+
+                    <div class="brand-icon">
+                        🎓
+                    </div>
+
+                    <span>
+                        Study Mentor AI
+                    </span>
+
+                </div>
+
+
+                <!-- Login Heading -->
+
+                <div class="login-heading">
+
+                    <h1>
+                        Welcome back
+                    </h1>
+
+                    <p>
+                        Sign in to continue your learning journey
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     LOGIN / REGISTER TABS
+                ================================================== -->
+
+                <div class="auth-tabs">
+
+
+                    <button
+                        id="login-tab"
+                        class="tab active"
+                        onclick="showLogin()">
+
+                        Login
+
+                    </button>
+
+
+                    <button
+                        id="register-tab"
+                        class="tab"
+                        onclick="showRegister()">
+
+                        Register
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     LOGIN FORM
+                ================================================== -->
+
+                <div id="login-form">
+
+
+                    <div class="form-group">
+
+                        <label for="login-username">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="login-username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="login-password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="login-password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="main-button"
+                        onclick="login()">
+
+                        Login
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     REGISTER FORM
+                ================================================== -->
+
+                <div
+                    id="register-form"
+                    style="display: none;"
+                >
+
+
+                    <div class="form-group">
+
+                        <label for="register-username">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="register-username"
+                            placeholder="Choose a username"
+                            autocomplete="username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="register-password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="register-password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="register-confirm-password">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="register-confirm-password"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="main-button"
+                        onclick="register()">
+
+                        Create Account
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     MESSAGE
+                ================================================== -->
+
+                <div
+                    id="message"
+                    class="message">
+                </div>
+
+
+                <!-- =================================================
+                     SECURITY
+                ================================================== -->
+
+                <div class="security-info">
+
+                    <span>🔒</span>
+
+                    <span>
+                        Your account is securely protected
+                    </span>
+
+                </div>
+
+
+                <!-- Footer -->
+
+                <div class="login-footer">
+
+                    <span>
+                        Study smarter. Remember more.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
         </div>
 
-        <h1>Study Mentor AI</h1>
 
-        <p class="subtitle">
-            Memory-Powered Learning Assistant
-        </p>
+        <!-- =====================================================
+             RIGHT PURPLE PANEL
+        ====================================================== -->
 
-        <p class="description">
-            Personalized AI mentor that remembers your
-            learning preferences, goals, weak subjects,
-            and study habits.
-        </p>
+        <div class="visual-panel">
 
-        <input
-            type="text"
-            id="username"
-            placeholder="Enter your name"
-            autocomplete="off"
-        >
 
-        <button onclick="login()">
-            Start Learning →
-        </button>
+            <!-- Decorative background -->
 
-        <div class="features">
+            <div class="purple-circle circle-one"></div>
 
-            <div class="feature">
-                🧠 Long-Term Memory
+            <div class="purple-circle circle-two"></div>
+
+            <div class="purple-circle circle-three"></div>
+
+
+            <div class="visual-content">
+
+
+                <!-- Heading -->
+
+                <div class="visual-heading">
+
+                    <h2>
+                        Learn smarter,
+                    </h2>
+
+                    <h2>
+                        grow continuously.
+                    </h2>
+
+                    <p>
+                        Your personal AI mentor that remembers
+                        your learning journey.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE AI / STUDENT ILLUSTRATION
+                ================================================== -->
+
+                <div class="illustration">
+
+
+                    <!-- Floating memory card -->
+
+                    <div class="floating-card memory-card">
+
+                        <div class="floating-icon">
+                            🧠
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Long-Term Memory
+                            </strong>
+
+                            <small>
+                                Your progress is remembered
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Main illustration -->
+
+                    <div class="student-illustration">
+
+
+                        <div class="illustration-glow"></div>
+
+
+                        <!-- AI Brain -->
+
+                        <div class="ai-brain">
+
+                            🧠
+
+                        </div>
+
+
+                        <!-- Book -->
+
+                        <div class="book">
+
+                            <div class="book-page"></div>
+
+                            <div class="book-line line-one"></div>
+
+                            <div class="book-line line-two"></div>
+
+                            <div class="book-line line-three"></div>
+
+                        </div>
+
+
+                        <!-- Student -->
+
+                        <div class="student">
+
+
+                            <div class="student-head">
+                                🙂
+                            </div>
+
+
+                            <div class="student-body">
+
+                                <span></span>
+
+                            </div>
+
+
+                            <div class="student-arm arm-left"></div>
+
+                            <div class="student-arm arm-right"></div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Floating progress card -->
+
+                    <div class="floating-card progress-card">
+
+
+                        <div class="progress-icon">
+                            🎯
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Personalized Learning
+                            </strong>
+
+                            <small>
+                                Learn at your own pace
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     FEATURES
+                ================================================== -->
+
+                <div class="visual-features">
+
+
+                    <div class="visual-feature">
+
+                        <span>
+                            🧠
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Long-Term Memory
+                            </strong>
+
+                            <small>
+                                Remembers your learning journey
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="visual-feature">
+
+                        <span>
+                            🎯
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Personalized
+                            </strong>
+
+                            <small>
+                                Teaching adapted to you
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="visual-feature">
+
+                        <span>
+                            📚
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                AI Tutor
+                            </strong>
+
+                            <small>
+                                Learn with an intelligent mentor
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
             </div>
 
-            <div class="feature">
-                📚 Personalized Learning
+
+            <!-- Bottom branding -->
+
+            <div class="visual-footer">
+
+                <span>
+                    Powered by
+                </span>
+
+                <span class="technology">
+                    Groq
+                </span>
+
+                <span class="dot">•</span>
+
+                <span class="technology">
+                    Hindsight
+                </span>
+
+                <span class="dot">•</span>
+
+                <span class="technology">
+                    FastAPI
+                </span>
+
             </div>
 
-            <div class="feature">
-                ⚡ Powered by Groq
-            </div>
 
         </div>
+
 
     </div>
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+    <script src="config.js"></script>
+
     <script src="login.js"></script>
+
 
 </body>
 
